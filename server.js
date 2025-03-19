@@ -2,13 +2,14 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorHandler');
 const app = express();
-const connectDB = require('./config/dbConnection');
+const connectDB = require('./config/dbConnection'); 
 
 connectDB();
 
 //middleware
 app.use(express.json());
 app.use('/api/contacts', require('./routes/contactRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 app.use(errorHandler);
 
 
